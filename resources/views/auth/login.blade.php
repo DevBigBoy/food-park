@@ -82,14 +82,14 @@
                                         <div class="fp__login_imput">
                                             <label for="email">email</label>
                                             <input type="email" id="email" placeholder="Email" name="email"
-                                                value="{{ old('email') }}" required autofocus autocomplete="username">
+                                                value="{{ old('email') }}" required autofocus>
                                         </div>
                                     </div>
                                     <div class="col-xl-12">
                                         <div class="fp__login_imput">
                                             <label for="password">password</label>
                                             <input type="password" id="password" placeholder="Password" name="password"
-                                                required autocomplete="current-password">
+                                                required>
                                         </div>
                                     </div>
                                     <div class="col-xl-12">

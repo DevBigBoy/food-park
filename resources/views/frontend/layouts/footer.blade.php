@@ -5,7 +5,7 @@
                 <div class="col-lg-4 col-sm-8 col-md-6">
                     <div class="fp__footer_content">
                         <a class="footer_logo" href="index.html">
-                            <img src="images/footer_logo.png" alt="FoodPark" class="img-fluid w-100">
+                            <img src="frontend/images/footer_logo.png" alt="FoodPark" class="img-fluid w-100">
                         </a>
                         <span>There are many variations of Lorem Ipsum available, but the majority have
                             suffered.</span>
@@ -69,7 +69,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="fp__footer_bottom_text d-flex flex-wrap justify-content-between">
-                        <p>Copyright 2022 <b>FoodPark</b> All Rights Reserved.</p>
+                        <p>Copyright 2024 <b>FoodPark</b> All Rights Reserved.</p>
                         <ul class="d-flex flex-wrap">
                             <li><a href="#">FAQs</a></li>
                             <li><a href="#">payment</a></li>
