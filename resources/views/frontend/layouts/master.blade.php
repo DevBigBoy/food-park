@@ -39,9 +39,7 @@
                 <div class="col-xl-6 col-md-4 d-none d-md-block">
                     <ul class="topbar_icon d-flex flex-wrap">
                         <li><a href="#"><i class="fab fa-facebook-f"></i></a> </li>
-                        <li><a href="#"><i class="fab fa-twitter"></i></a> </li>
-                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a> </li>
-                        <li><a href="#"><i class="fab fa-behance"></i></a> </li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a> </li>
                     </ul>
                 </div>
             </div>
