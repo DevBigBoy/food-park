@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 
 /** Admin Auth Routes */
 Route::get('admin/login', [AdminAuthController::class, 'index'])->name('admin.login');
+Route::get('admin/forget-password', [AdminAuthController::class, 'forgetPassword'])->name('admin.forget-password');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
