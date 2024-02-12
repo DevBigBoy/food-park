@@ -37,7 +37,9 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="">
+                    <form action="{{ route('admin.profile.password.update') }}" method="POST">
+                        @csrf
+                        @method('PUT')
                         <div class="form-group">
                             <label for="password">Current Password</label>
                             <input type="password" name="current_password" id="password" class="form-control">
