@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/fontawesome/css/all.min.css') }}">
 
+
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="{{ asset('admin/assets/modules/summernote/summernote-bs4.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/assets/modules/jquery-selectric/selectric.css') }}">
     <!-- CSS Libraries -->
     {{-- <link rel="stylesheet" href="{{ asset('admin/assets/modules/jqvmap/dist/jqvmap.min.css') }}"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('admin/assets/modules/weather-icon/css/weather-icons.min.css') }}"> --}}
@@ -68,6 +72,8 @@
     {{-- <script src="{{ asset('admin/assets/modules/moment.min.js') }}"></script> --}}
     <script src="{{ asset('admin/assets/js/stisla.js') }}"></script>
 
+    <script src="{{ asset('admin/assets/modules/jquery-selectric/jquery.selectric.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js') }}"></script>
     <!-- JS Libraies -->
     {{-- <script src="{{ asset('admin/assets/modules/simple-weather/jquery.simpleWeather.min.js') }}"></script> --}}
     {{-- <script src="{{ asset('admin/assets/modules/chart.min.js') }}"></script> --}}
@@ -77,7 +83,8 @@
     {{-- <script src="{{ asset('admin/assets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script> --}}
 
     <!-- Page Specific JS File -->
-    {{-- <script src="{{ asset('admin/assets/js/page/index-0.js') }}"></script> --}}
+    {{-- <script src="{{ asset('admin/assets/js/page/features-post-create.js') }}"></script> --}}
+
 
     <!-- Template JS File -->
     <script src="{{ asset('admin/assets/js/scripts.js') }}"></script>
@@ -92,6 +99,19 @@
             @endforeach
         @endif
     </script>
+    <script>
+        $.uploadPreview({
+            input_field: "#image-upload", // Default: .image-upload
+            preview_box: "#image-preview", // Default: .image-preview
+            label_field: "#image-label", // Default: .image-label
+            label_default: "Choose File", // Default: Choose File
+            label_selected: "Change File", // Default: Change File
+            no_label: false, // Default: false
+            success_callback: null // Default: null
+        });
+    </script>
+
+    @stack('scripts')
 </body>
 
 </html>

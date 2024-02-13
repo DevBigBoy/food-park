@@ -21,6 +21,7 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
+        $user->avatar = $request->avatar;
         $user->name = $request->name;
         $user->email =  $request->email;
         $user->save();
