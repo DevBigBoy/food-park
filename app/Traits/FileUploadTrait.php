@@ -2,9 +2,9 @@
 
 namespace App\Traits;
 
-use Request;
+use Illuminate\Http\Request;
 
-trait FileUploadTraint
+trait FileUploadTrait
 {
     function uploadImage(Request $request, $inputName, $path = '/uploads')
     {
@@ -14,9 +14,11 @@ trait FileUploadTraint
             $imageName = 'media_' . uniqid() . '.' . $ext;
 
 
-            $image->move(public_path($path));
+            $image->move(public_path($path), $imageName);
 
             return $path . '/' . $imageName;
         }
+
+        return null;
     }
 }
