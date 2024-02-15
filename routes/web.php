@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Frontend\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,16 +22,12 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 Route::get('admin/login', [AdminAuthController::class, 'index'])->name('admin.login');
 Route::get('admin/forget-password', [AdminAuthController::class, 'forgetPassword'])->name('admin.forget-password');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
