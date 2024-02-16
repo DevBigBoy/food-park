@@ -28,11 +28,11 @@
                         <div class="fp__dashboard_menu">
                             <div class="dasboard_header">
                                 <div class="dasboard_header_img">
-                                    <img src="{{ Auth()->user()->avatar }}" alt="user" class="img-fluid w-100">
+                                    <img src="{{ auth()->user()->avatar }}" alt="user" class="img-fluid w-100">
                                     <label for="upload"><i class="far fa-camera"></i></label>
                                     <input type="file" id="upload" hidden>
                                 </div>
-                                <h2> {{ Auth()->user()->name }}</h2>
+                                <h2> {{ auth()->user()->name }}</h2>
                             </div>
                             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                                 aria-orientation="vertical">
@@ -112,8 +112,8 @@
                                             </h4>
 
                                             <div class="personal_info_text">
-                                                <p><span>Name:</span>{{ Auth()->user()->name }}</p>
-                                                <p><span>Email:</span>{{ Auth()->user()->email }}</p>
+                                                <p><span>Name:</span>{{ auth()->user()->name }}</p>
+                                                <p><span>Email:</span>{{ auth()->user()->email }}</p>
 
                                             </div>
 
@@ -126,14 +126,14 @@
                                                             <div class="fp__comment_imput_single">
                                                                 <label>name</label>
                                                                 <input type="text" placeholder="Name" name="name"
-                                                                    value="">
+                                                                    value="{{ auth()->user()->name }}">
                                                             </div>
                                                         </div>
                                                         <div class="col-xl-6 col-lg-6">
                                                             <div class="fp__comment_imput_single">
                                                                 <label>email</label>
                                                                 <input type="email" placeholder="Email" name="email"
-                                                                    value="">
+                                                                    value="{{ auth()->user()->email }}">
                                                             </div>
                                                         </div>
                                                         <div class="col-xl-12">
