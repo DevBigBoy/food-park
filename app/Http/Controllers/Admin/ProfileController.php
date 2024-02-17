@@ -42,7 +42,7 @@ class ProfileController extends Controller
         $user->password =  bcrypt($request->password);
         $user->save();
 
-        toastr('Password Updated Successfully!', 'success');
+        toastr()->success('Password Updated Successfully!');
 
         return redirect()->back();
     }
