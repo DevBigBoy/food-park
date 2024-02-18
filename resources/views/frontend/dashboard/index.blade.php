@@ -29,8 +29,10 @@
                             <div class="dasboard_header">
                                 <div class="dasboard_header_img">
                                     <img src="{{ auth()->user()->avatar }}" alt="user" class="img-fluid w-100">
-                                    <label for="upload"><i class="far fa-camera"></i></label>
-                                    <input type="file" id="upload" hidden>
+                                    <form id="avatar_form">
+                                        <label for="upload"><i class="far fa-camera"></i></label>
+                                        <input type="file" id="upload" hidden name="avatar">
+                                    </form>
                                 </div>
                                 <h2> {{ auth()->user()->name }}</h2>
                             </div>
@@ -43,13 +45,15 @@
 
                                 <button class="nav-link" id="v-pills-address-tab" data-bs-toggle="pill"
                                     data-bs-target="#v-pills-address" type="button" role="tab"
-                                    aria-controls="v-pills-address" aria-selected="true"><span><i
-                                            class="fas fa-user"></i></span>address</button>
+                                    aria-controls="v-pills-address" aria-selected="true">
+                                    <span><i class="fas fa-user"></i></span>address
+                                </button>
 
                                 <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill"
                                     data-bs-target="#v-pills-profile" type="button" role="tab"
-                                    aria-controls="v-pills-profile" aria-selected="false"><span><i
-                                            class="fas fa-bags-shopping"></i></span> Order</button>
+                                    aria-controls="v-pills-profile" aria-selected="false">
+                                    <span><i class="fas fa-bags-shopping"></i></span> Order
+                                </button>
 
                                 <button class="nav-link" id="v-pills-messages-tab2" data-bs-toggle="pill"
                                     data-bs-target="#v-pills-messages2" type="button" role="tab"
@@ -66,8 +70,11 @@
                                     aria-controls="v-pills-settings" aria-selected="false"><span><i
                                             class="fas fa-user-lock"></i></span> Change Password </button>
 
-                                <button class="nav-link" type="button"><span> <i class="fas fa-sign-out-alt"></i>
-                                    </span> Logout</button>
+                                <button class="nav-link" type="button">
+                                    <span>
+                                        <i class="fas fa-sign-out-alt"></i>
+                                    </span> Logout
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -188,10 +195,15 @@
                                                                 </label>
                                                             </div>
                                                             <ul>
-                                                                <li><a class="dash_edit_btn"><i
-                                                                            class="far fa-edit"></i></a></li>
-                                                                <li><a class="dash_del_icon"><i
-                                                                            class="fas fa-trash-alt"></i></a>
+                                                                <li>
+                                                                    <a class="dash_edit_btn">
+                                                                        <i class="far fa-edit"></i>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a class="dash_del_icon">
+                                                                        <i class="fas fa-trash-alt"></i>
+                                                                    </a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -1229,3 +1241,31 @@
     <!-- CART POPUT END -->
     <!--========================= DASHBOARD END ==========================-->
 @endsection
+
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#upload').on('change', function() {
+                let form = $('#avatar_form')[0];
+                let formData = new FormData(form);
+
+                $.ajax({
+                    method: 'POST',
+                    url: "{{ route('profile.avatar.update') }}",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        if (response.status === 'success') {
+                            window.location.reload();
+                        }
+                    },
+                    error: function(error) {
+                        console.error(response);
+                    }
+                })
+            })
+        })
+    </script>
+@endpush
