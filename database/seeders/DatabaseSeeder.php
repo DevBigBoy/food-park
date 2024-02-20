@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call(Userseeder::class);
+        \App\Models\Slider::factory(3)->create();
     }
 }
