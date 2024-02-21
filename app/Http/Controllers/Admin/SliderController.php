@@ -6,6 +6,7 @@ use App\DataTables\SliderDataTable;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\SliderCreateRequest;
 
 class SliderController extends Controller
 {
@@ -28,9 +29,9 @@ class SliderController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SliderCreateRequest $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
