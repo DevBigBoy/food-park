@@ -2,11 +2,12 @@
 
 namespace App\Traits;
 
+use File;
 use Illuminate\Http\Request;
 
 trait FileUploadTrait
 {
-    function uploadImage(Request $request, $inputName, $path = '/uploads')
+    function uploadImage(Request $request, $inputName, $oldPath = null, $path = '/uploads')
     {
         if ($request->hasFile($inputName)) {
             $image = $request->{$inputName};
@@ -15,6 +16,11 @@ trait FileUploadTrait
 
 
             $image->move(public_path($path), $imageName);
+
+            /** Delete previous file if exist */
+            if ($oldPath && File::exists(public_path($oldPath))) {
+                File::delete(public_path($oldPath));
+            }
 
             return $path . '/' . $imageName;
         }

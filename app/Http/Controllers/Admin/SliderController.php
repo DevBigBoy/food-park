@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\SliderCreateRequest;
+use App\Http\Requests\Admin\SliderUpdateRequest;
 use App\Models\Slider;
 use App\Traits\FileUploadTrait;
 use Auth;
@@ -73,8 +74,11 @@ class SliderController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(SliderUpdateRequest $request, string $id)
     {
+        /** Handle Image Upload */
+        $slider = Slider::findOrFail($id);
+        $imagePath = $this->uploadImage($request, 'image', $slider->image);
     }
 
     /**
