@@ -11,6 +11,7 @@ use App\Http\Requests\Admin\SliderUpdateRequest;
 use App\Models\Slider;
 use App\Traits\FileUploadTrait;
 use Auth;
+use Illuminate\Http\RedirectResponse;
 
 class SliderController extends Controller
 {
@@ -38,7 +39,7 @@ class SliderController extends Controller
     public function store(SliderCreateRequest $request)
     {
         /** Handle Image Upload */
-        $imagePath = $this->uploadImage($request, 'image');
+        $imagePath = $this->uploadImage($request, 'image', '/sliders');
 
         $slider = new Slider();
         $slider->image = $imagePath;
@@ -74,11 +75,25 @@ class SliderController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(SliderUpdateRequest $request, string $id)
+    public function update(SliderUpdateRequest $request, string $id): RedirectResponse
     {
-        /** Handle Image Upload */
         $slider = Slider::findOrFail($id);
-        $imagePath = $this->uploadImage($request, 'image', $slider->image);
+
+        /** Handle Image Upload */
+        $imagePath = $this->uploadImage($request, 'image', '/sliders', $slider->image);
+
+        $slider->image = !empty($imagePath) ? $imagePath : $slider->image;
+        $slider->offer = $request->offer;
+        $slider->title = $request->title;
+        $slider->sub_title = $request->sub_title;
+        $slider->short_description = $request->short_description;
+        $slider->button_link = $request->button_link;
+        $slider->status = $request->status;
+        $slider->save();
+
+        toastr()->success('Updated Successfully');
+
+        return to_route('admin.slider.index');
     }
 
     /**
